@@ -9,3 +9,9 @@ def add_product():
     new_product = add_product.add_product()
     return new_product
 
+@app.route("/api/v1/products", methods=["GET"])
+# fetching all products
+def fetch_all_products():
+    all_products = Product.fetch_all_products()
+    return all_products 
+
