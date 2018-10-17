@@ -3,4 +3,5 @@ env/
 .vscode/
 app/*.pyc
 app/models/*.pyc
-app/models/__pycache__/
+app/models/__pycache__/*.pyc
+
