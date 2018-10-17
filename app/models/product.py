@@ -14,4 +14,3 @@ class Product:
             )
         self.all_products.append(product)
         return True
-        
