@@ -38,3 +38,10 @@ class SaleRecord:
     #                 return True
     #     else:
     #         return False
+
+    def fetch_all_sales(self):
+        # fetch all available sales
+        if len(self.all_Sales) > 0:
+            return self.all_Sales
+        return False
+

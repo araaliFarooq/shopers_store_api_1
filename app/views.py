@@ -66,5 +66,13 @@ def create_sales_record():
         else:
             return jsonify({"message":"sale record not created or no products added yet"}), 400
     else:
-        return jsonify({"message": "a 'key(s)' is missing in your request body"}), 400 
+        return jsonify({"message": "a 'key(s)' is missing in your request body"}), 400
+
+@app.route("/api/v1/sales", methods=["GET"])
+# fetching all sales
+def fetch_all_sales():
+    all_sales = sale_obj.fetch_all_sales()
+    if all_sales:
+        return jsonify({"All Sales":sale_obj.all_Sales}), 200
+    return jsonify({"message":"no sales created yet"}), 404  
 

@@ -13,7 +13,7 @@ class Product(object):
                 unit_price = unit_price
             )
         self.all_products.append(product)
-        return True
+        return self.all_products
 
     def fetch_all_products(self):
         # fetch all available products
