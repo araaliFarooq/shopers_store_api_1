@@ -1,6 +1,6 @@
 "model class for a product"
 
-class Product:
+class Product(object):
     def __init__(self):
         self.all_products = []
 
