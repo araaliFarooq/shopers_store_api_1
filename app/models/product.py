@@ -28,8 +28,5 @@ class Product:
                 if ((self.all_products[product]["product_id"]) == int(product_id)):
                     return self.all_products[product]
                 return False    
-        return False   
-        
-        
-
-    
+        return False
+      

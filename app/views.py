@@ -42,5 +42,4 @@ def fetch_single_product(product_id):
     single_product = product_obj.fetch_single_product(product_id)
     if single_product:
         return jsonify({"product details": single_product}), 200
-    return jsonify({"message":"product not added yet"}), 404    
-
+    return jsonify({"message":"product not added yet"}), 404
