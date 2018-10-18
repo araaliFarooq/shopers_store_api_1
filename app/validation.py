@@ -1,20 +1,19 @@
 import re
 
 class Validation:
-
     # add product validation.
-    def product_validation(self, product, quantity, unit_price):
-        if not product:
+    def product_validation(self, product_name, quantity, unit_price):
+        if not product_name:
             return "product name is missing"
-        if product == " ":
+        if product_name == " ":
             return "product name is missing"
-        if not re.match(r"^([a-zA-Z]+\s)*[a-zA-Z]+$", product):
+        if not re.match(r"^([a-zA-Z]+[-_\s])*[a-zA-Z]+$", product_name):
             return "product name must have no white spaces"
         if not re.match(r"^[0-9]*$", quantity):
             return "quantity must be only digits and must have no white spaces"
         if not re.match(r"^[0-9]*$", unit_price):
             return "unit price must be only digits and must have no white spaces"    
-        if len(product) < 4:
+        if len(product_name) < 4:
             return "product name should be more than 4 characters long"
         if not quantity:
             return "quantity is missing"

@@ -23,23 +23,23 @@ def add_product():
             return jsonify({"message":"product already exists, just update its quantity"}), 409
         if (product_obj.add_product(product, quantity, unit_price)):
             return jsonify({"message":"product successfully added", "products":product_obj.all_products}), 201
-    return jsonify({"message": "a 'key(s)' is missing in your request body"}), 400         
-    
-
+    return jsonify({"message": "a 'key(s)' is missing in your request body"}), 400
 
 @app.route("/api/v1/products", methods=["GET"])
 # fetching all products
 def fetch_all_products():
-    all_products = Product.fetch_all_products()
-    return all_products 
+    all_products = product_obj.fetch_all_products()
+    if all_products:
+        return jsonify({"All Products":all_products}), 200
+    return jsonify({"message":"no products added yet"}), 404 
 
 @app.route("/api/v1/products/<product_id>", methods=["GET"])
 # fetching a single product
 def fetch_single_product(product_id):
-    valid = validation.validate_input_type(product_id)
+    valid = validation_obj.validate_input_type(product_id)
     if valid:
         return jsonify({"message":valid}), 400
-    product = Product(product_id)
-    single_product = product.fetch_single_product()
-    return single_product
+    # product = Product(product_id)
+    # single_product = product.fetch_single_product()
+    # return single_product
 
