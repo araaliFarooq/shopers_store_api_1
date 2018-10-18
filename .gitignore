@@ -1,0 +1,5 @@
+env/
+*.pyc
+.vscode/
+app/*.pyc
+app/models/*.pyc
