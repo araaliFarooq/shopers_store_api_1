@@ -20,4 +20,13 @@ class Product:
         if len(self.all_products) > 0:
             return self.all_products
         return False
+
+    def fetch_single_product(self, product_id):
+        # fetch a single product
+        if len(self.all_products) > 0:
+            for product in range(len(self.all_products)):
+                if ((self.all_products[product]["product_id"]) == int(product_id)):
+                    return self.all_products[product]
+                return False    
+        return False
       
