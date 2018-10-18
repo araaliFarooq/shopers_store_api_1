@@ -23,7 +23,7 @@ def add_product():
             return jsonify({"message":"product already exists, just update its quantity"}), 409
         if (product_obj.add_product(product, quantity, unit_price)):
             return jsonify({"message":"product successfully added", "products":product_obj.all_products}), 201
-    return jsonify({"message": "a 'key(s)' is missing in your request body"}), 400 
+    return jsonify({"message": "a 'key(s)' is missing in your request body"}), 400
 
 @app.route("/api/v1/products", methods=["GET"])
 # fetching all products

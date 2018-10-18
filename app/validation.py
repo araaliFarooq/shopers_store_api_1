@@ -1,7 +1,6 @@
 import re
 
 class Validation:
-
     # add product validation.
     def product_validation(self, product_name, quantity, unit_price):
         if not product_name:

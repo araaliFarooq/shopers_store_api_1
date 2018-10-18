@@ -20,5 +20,4 @@ class Product:
         if len(self.all_products) > 0:
             return self.all_products
         return False
-
-    
+      
