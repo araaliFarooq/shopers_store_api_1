@@ -20,11 +20,11 @@ class Validation:
             return "quantity is missing"
         if quantity == " ":
             return "quantity is missing"
-        if quantity < 1:
+        if int(quantity) < 1:
             return "quantity should be at least 1 item"    
         if not unit_price:
             return "unit_price is missing"
-        if unit_price < 1:
+        if int(unit_price) < 1:
             return "unit price should be greater than zero"    
         if unit_price == " ":
             return "unit_price is missing"    
