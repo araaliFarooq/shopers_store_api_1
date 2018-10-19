@@ -1,11 +1,14 @@
 from app import app
 from flask import request, jsonify
 from .models.product import Product
+from .models.sales import SaleRecord
 from app.validation import Validation
 
 product_obj = Product()
+sale_obj = SaleRecord()
 validation_obj = Validation()
 
+"""Product Views"""
 @app.route("/api/v1/products",methods=["POST"])
 #adding product
 def add_product():
@@ -43,3 +46,25 @@ def fetch_single_product(product_id):
     if single_product:
         return jsonify({"product details": single_product}), 200
     return jsonify({"message":"product not added yet"}), 404
+
+"""Sales View"""
+@app.route("/api/v1/sales", methods=["POST"])
+#adding sales recotd
+def create_sales_record():
+    data = request.get_json()
+    search_keys = ( "product","quantity", "amount")
+    if all(key in data.keys() for key in search_keys):
+        product = data.get("product")
+        quantity = data.get("quantity")
+        amount = data.get("amount")
+
+        invalid_values = validation_obj.product_validation(product, quantity, amount)
+        if invalid_values:
+            return jsonify({"message":invalid_values}), 400
+        if (sale_obj.create_sale_record(product, quantity, amount)):
+            return jsonify({"message":"Sale record successfully created", "Sales":sale_obj.all_Sales}), 201
+        else:
+            return jsonify({"message":"sale record not created or no products added yet"}), 400
+    else:
+        return jsonify({"message": "a 'key(s)' is missing in your request body"}), 400 
+
