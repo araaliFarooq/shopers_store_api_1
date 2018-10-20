@@ -6,6 +6,9 @@
 ## About
 This is an API of an application to manage and record transcations of a shopping store
 
+## Heroku demo link
+https://shopers-store.herokuapp.com/
+
 ## Features 
 - Fetch all products
 - Fetch a single product record
