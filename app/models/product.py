@@ -24,9 +24,10 @@ class Product(object):
     def fetch_single_product(self, product_id):
         # fetch a single product
         if len(self.all_products) > 0:
-            for product in range(len(self.all_products)):
-                if ((self.all_products[product]["product_id"]) == int(product_id)):
-                    return self.all_products[product]
+            try:
+                product = next(item for item in self.all_products if item["product_id"] == int(product_id))
+                return product
+            except Exception as error:
                 return False    
         return False
       
