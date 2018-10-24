@@ -26,8 +26,8 @@ class TestProducts(BaseTestCase):
             data=json.dumps(dict(product="Shirtsss", quantity="20", unit_price="200"),))    
 
         reply = json.loads(response2.data)
-        self.assertEquals(reply["message"], "product already exists, just update its quantity")
-        self.assertEquals(response2.status_code, 409)
+        self.assertEquals(reply["message"], "product already exists,and its quantity has been updated")
+        self.assertEquals(response2.status_code, 200)
 
     def test_add_product_with_no_name(self):
         response = self.app.post("/api/v1/products",
@@ -90,8 +90,7 @@ class TestProducts(BaseTestCase):
 
         reply = json.loads(response.data.decode())
         response2 = self.app.get("/api/v1/products",
-        content_type='application/json',
-            data=reply)
+        content_type='application/json')
         reply2 = json.loads(response2.data.decode())
         self.assertEquals(response2.status_code, 200)
 
@@ -102,8 +101,7 @@ class TestProducts(BaseTestCase):
 
         reply = json.loads(response.data.decode())
         response2 = self.app.get("/api/v1/products/1",
-        content_type='application/json',
-            data=reply)
+        content_type='application/json')
         reply2 = json.loads(response2.data.decode())
         self.assertEquals(response2.status_code, 200)
 
@@ -114,8 +112,7 @@ class TestProducts(BaseTestCase):
 
         reply = json.loads(response.data.decode())
         response2 = self.app.get("/api/v1/products/12",
-        content_type='application/json',
-            data=reply)
+        content_type='application/json')
         reply2 = json.loads(response2.data.decode())
         self.assertEquals(response2.status_code, 404)    
 
@@ -126,8 +123,7 @@ class TestProducts(BaseTestCase):
 
         reply = json.loads(response.data.decode())
         response2 = self.app.get("/api/v1/products/q",
-        content_type='application/json',
-            data=reply)
+        content_type='application/json')
         reply2 = json.loads(response2.data.decode())
         self.assertEquals(response2.status_code, 400)        
         
