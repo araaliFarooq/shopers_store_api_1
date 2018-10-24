@@ -22,9 +22,13 @@ def add_product():
         invalid = validation_obj.product_validation(product, quantity, unit_price)
         if invalid:
             return jsonify({"message":invalid}), 400
-        if any(prodct["product"] == product for prodct in product_obj.all_products):
-            return jsonify({"message":"product already exists, just update its quantity"}), 409
-        if (product_obj.add_product(product, quantity, unit_price)):
+        # if any(prodct["product"] == product for prodct in product_obj.all_products):
+        for prod in range(len(product_obj.all_products)):
+            if product_obj.all_products[prod]["product"] == product:
+                new_quantity = product_obj.all_products[prod]["quantity"] + int(quantity)
+                product_obj.all_products[prod]["quantity"] = new_quantity
+                return jsonify({"message":"product already exists,and its quantity has been updated","products":product_obj.all_products}), 200
+        if (product_obj.add_product(product, int(quantity), unit_price)):
             return jsonify({"message":"product successfully added", "products":product_obj.all_products}), 201
     return jsonify({"message": "a 'key(s)' is missing in your request body"}), 400 
 
