@@ -6,7 +6,14 @@ product_obj = Product()
 
 class SaleRecord:
     def __init__(self):
-        self.all_Sales = []
+        self.all_Sales = [{
+            "amount": "30000",
+            "attendant": "attendants_name",
+            "date": "2018-10-25 15:02:49",
+            "product": "Swim Suits",
+            "quantity": "30",
+            "sale_id": 1
+        }]
 
     def create_sale_record(self, product, quantity, amount):
         # create a sales record

@@ -2,7 +2,12 @@
 
 class Product(object):
     def __init__(self):
-        self.all_products = []
+        self.all_products = [{
+            "product": "Tshirts",
+            "product_id": 1,
+            "quantity": 3,
+            "unit_price": "2000"
+        }]
 
     def add_product(self, product, quantity, unit_price):
         #Add product item
